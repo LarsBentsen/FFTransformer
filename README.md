@@ -23,15 +23,18 @@ The dataset contained off-shore metereological measurements from the Norwegian c
 
 ## Citation
 
-If you found this repo useful, please cite our paper. 
+If you found this repo useful, please cite our paper (temporary - In Review): 
 
 ```
-@inproceedings{wu2021autoformer,
-  title={Autoformer: Decomposition Transformers with {Auto-Correlation} for Long-Term Series Forecasting},
-  author={Haixu Wu and Jiehui Xu and Jianmin Wang and Mingsheng Long},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2021}
+@misc{https://doi.org/10.48550/arxiv.2208.13585,
+  doi = {10.48550/ARXIV.2208.13585},
+  url = {https://arxiv.org/abs/2208.13585},
+  author = {Bentsen, Lars Ødegaard and Warakagoda, Narada Dilp and Stenbro, Roy and Engelstad, Paal},  
+  title = {Spatio-Temporal Wind Speed Forecasting using Graph Networks and Novel Transformer Architectures},
+  publisher = {arXiv},
+  year = {2022}
 }
+
 ```
 
 ## Contact
