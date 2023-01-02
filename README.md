@@ -30,10 +30,10 @@ The dataset contained off-shore metereological measurements from the Norwegian c
 
 ## Citation
 
-If you found this repo useful, please cite our paper (temporary - In Review): 
+If you found this repo useful, please cite our paper: 
 
 ```
-@article{BENTSEN2023120565,
+@article{Bentsen2022forecasting,
 title = {Spatio-temporal wind speed forecasting using graph networks and novel Transformer architectures},
 journal = {Applied Energy},
 volume = {333},
