@@ -261,6 +261,7 @@ class Exp_Main(Exp_Basic):
                     dec_inp = dec_inp[:, :, -self.args.dec_in:]
                     batch_x = batch_x[:, :, -self.args.enc_in:]
 
+                # Note that the collate function is not optimised and might have some potential errors
                 if self.args.data == 'WindGraph' and self.args.use_multi_gpu:
                     batch_x, sub_bs_x, target_gpus = split_torch_graph(batch_x, self.args.devices.split(','))
                     dec_inp, sub_bs_y, _ = split_torch_graph(dec_inp, self.args.devices.split(','))

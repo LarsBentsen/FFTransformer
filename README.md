@@ -24,7 +24,7 @@ The dataset contained off-shore metereological measurements from the Norwegian c
 ## Get Started
 
 1. Install Python 3.6 and the required packages in `./requirements.txt`
-2. Either download the full dataset using the [Frost API](https://frost.met.no/index.html), use the tiny example dataset provided or download your own time-series data (might require some additional functionality in `./data_provider/data_loader.py`, see [Autoformer repo](https://github.com/thuml/Autoformer)
+2. Either download the full dataset using the [Frost API](https://frost.met.no/index.html), use the tiny example dataset provided or download your own time-series data (might require some additional functionality in `./data_provider/data_loader.py`, see [Autoformer repo](https://github.com/thuml/Autoformer)).
 3. Train models using the desired configuration set-up. You can simply write bash scripts in the same manner as [here](https://github.com/thuml/Autoformer) if desired. 
 
 
