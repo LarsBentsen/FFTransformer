@@ -25,18 +25,18 @@ class Model(nn.Module):
 
         self.enc_embedding = DataEmbedding(configs.enc_in, configs.d_model, configs.embed, configs.freq,
                                            configs.dropout, kernel_size=configs.kernel_size, pos_embed=False)
-        self.dec_embedding = DataEmbedding(configs.dec_in, configs.d_model, configs.embed, configs.freq,
-                                           configs.dropout, kernel_size=configs.kernel_size, pos_embed=False)
+        # self.dec_embedding = DataEmbedding(configs.dec_in, configs.d_model, configs.embed, configs.freq,
+        #                                    configs.dropout, kernel_size=configs.kernel_size, pos_embed=False)
 
         self.encoder = Encoder(d_model=self.d_model, num_layers=self.enc_layers, dropout=configs.dropout)
         self.decoder = Decoder(output_size=configs.c_out, d_model=self.d_model,
                                dropout=configs.dropout, num_layers=self.dec_layers)
 
-    def forward(self, x_enc, x_mark_enc, x_dec, x_mark_dec, teacher_forcing_ratio=None, **_):
+    def forward(self, x_enc, x_mark_enc, x_dec, x_mark_dec, teacher_forcing_ratio=None, batch_y=None, **_):
         if self.train_strat_lstm == 'mixed_teacher_forcing' and self.training:
             assert teacher_forcing_ratio is not None
+            target = batch_y[:, -self.pred_len:, -self.output_size:]
 
-        target = x_dec[:, -self.pred_len:, -self.output_size:]
         enc_out = self.enc_embedding(x_enc, x_mark_enc)
 
         enc_out, enc_hid = self.encoder(enc_out)
@@ -48,7 +48,7 @@ class Model(nn.Module):
         dec_inp = x_dec[:, -(self.pred_len + 1), -self.output_size:]
         dec_hid = enc_hid
 
-        outputs = torch.zeros_like(target)
+        outputs = torch.zeros((x_enc.shape[0], self.pred_len, self.output_size)).to(enc_out.device)
 
         if not self.training or self.train_strat_lstm == 'recursive':
             for t in range(self.pred_len):

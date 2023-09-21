@@ -274,10 +274,10 @@ class Exp_Main(Exp_Basic):
                 # encoder - decoder
                 if self.args.output_attention:
                     outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark,
-                                         teacher_forcing_ratio=teacher_forcing_ratio)[0]
+                                         teacher_forcing_ratio=teacher_forcing_ratio, batch_y=batch_y)[0]
                 else:
                     outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark,
-                                         teacher_forcing_ratio=teacher_forcing_ratio)
+                                         teacher_forcing_ratio=teacher_forcing_ratio, batch_y=batch_y)
 
                 if 'M' in self.args.features:
                     f_dim = -self.args.c_out
